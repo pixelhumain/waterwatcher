@@ -82,13 +82,14 @@
 							$.ajax({
 							    url:'/ph/waterwatcher/default/login',
 							    type:"POST",
+							    dataType : "json",
 							    data:{ "email" : $("#emailLogin").val() , 
 							    	   "pwd" : $("#pwdLogin").val()},
 							    success:function(data) {
-							      $("#loginResult").html(data);
+							      $("#loginResult").html(JSON.stringify(data, null, 4));
 							    },
 							    error:function (xhr, ajaxOptions, thrownError){
-							      $("#loginResult").html(data);
+							      $("#loginResult").html(JSON.stringify(data, null, 4));
 							    } 
 							  });
 						}

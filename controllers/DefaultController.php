@@ -33,7 +33,7 @@ class DefaultController extends Controller {
      * @return [type] [description]
      */
     public function actionLogin() {
-        echo Citoyen::login($_POST["email"], $_POST["pwd"]);
+        echo Rest::json(Citoyen::login($_POST["email"], $_POST["pwd"]));
         Yii::app()->end();
     }
 
@@ -48,7 +48,7 @@ class DefaultController extends Controller {
         $email = $_POST["email"];
 
         //if exists login else create the new user
-        echo Citoyen::register($email, $_POST["pwd"]);
+        echo Rest::json(Citoyen::register($email, $_POST["pwd"]));
         if (Yii::app()->mongodb->citoyens->findOne(array("email" => $email))) {
             //udate the new app specific fields
             $newInfos = array();
