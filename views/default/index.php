@@ -114,9 +114,10 @@
 					type : <select name="typeSaveUser" id="typeSaveUser">
 								<?php 
 								$tor = Yii::app()->mongodb->lists->findOne( array( "name" => "typeObservaterReunion" ),array("list") ) ;
-								foreach ($tor["list"] as $key => $value) {
-									echo '<option value="'.$key.'">'.$value.'</option>';
-								}
+								if(isset($tor["list"]))
+									foreach ($tor["list"] as $key => $value) {
+										echo '<option value="'.$key.'">'.$value.'</option>';
+									}
 								?>
 							</select><br/>
 					<!-- langue : <select name="langSaveUser" id="langSaveUser">
@@ -276,9 +277,10 @@
 						<option></option>
 						<?php 
 						$typeObservationReunion = Yii::app()->mongodb->lists->findOne( array( "name" => "typeObservationReunion" ),array("list") ) ;
-						foreach ($typeObservationReunion["list"] as $key => $value) {
-							echo '<option value="'.$key.'">'.$value.'</option>';
-						}
+						if(isset($typeObservationReunion["list"]))
+							foreach ($typeObservationReunion["list"] as $key => $value) {
+								echo '<option value="'.$key.'">'.$value.'</option>';
+							}
 						?>
 					</select><br/>
 					who : <?php echo Yii::app()->session["userId"]; ?><input type="hidden" name="whoaddObservation" id="whoaddObservation" value="<?php echo Yii::app()->session["userId"]; ?>" /><br/>
@@ -287,9 +289,10 @@
 						<option></option>
 						<?php 
 						$where = Yii::app()->mongodb->lists->findOne( array( "name" => "surfSpotReunion" ),array("list") ) ;
-						foreach ($where["list"] as $key => $value) {
-							echo '<option value="'.$key.'">'.$value.'</option>';
-						}
+						if(isset($where["list"]))
+							foreach ($where["list"] as $key => $value) {
+								echo '<option value="'.$key.'">'.$value.'</option>';
+							}
 						?>
 					</select><br/>
 					<div id="addObservationwhatContainer" class="hide">
